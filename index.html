@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parlando — Tu voz, sus ojos</title>
+<meta name="description" content="App de transcripción en vivo para personas con dificultad auditiva. Tu voz se convierte en texto grande en su pantalla, en tiempo real.">
+<meta property="og:title" content="Parlando — Tu voz, sus ojos">
+<meta property="og:description" content="App de transcripción en vivo para personas con dificultad auditiva.">
+<meta property="og:image" content="https://parlandoapp.com/og.jpg">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #0f0f18;
+  --surface: #13131e;
+  --border: #1e1e2e;
+  --accent: #f0c060;
+  --accent2: #e07840;
+  --text: #ede8f0;
+  --text-dim: #6a6480;
+  --text-mid: #a09ab0;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.4;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(10,10,15,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--text-mid);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--accent) !important;
+  color: #000 !important;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 500 !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(240,192,96,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(240,192,96,0.08);
+  border: 1px solid rgba(240,192,96,0.2);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  animation: fade-up 0.8s ease both;
+}
+.hero-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 10vw, 96px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 8px;
+  animation: fade-up 0.8s 0.1s ease both;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-mid);
+  margin-bottom: 40px;
+  animation: fade-up 0.8s 0.2s ease both;
+}
+.hero-desc {
+  font-size: 16px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto 48px;
+  animation: fade-up 0.8s 0.3s ease both;
+}
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fade-up 0.8s 0.4s ease both;
+}
+
+/* iOS capture inline */
+.ios-capture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  animation: fade-up 0.8s 0.45s ease both;
+}
+.ios-capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ios-capture input[type="email"] {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  padding: 10px 14px;
+  outline: none;
+  width: 220px;
+  transition: border-color 0.2s;
+}
+.ios-capture input[type="email"]:focus { border-color: rgba(240,192,96,0.5); }
+.ios-capture input[type="email"]::placeholder { color: var(--text-dim); }
+.ios-capture button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  color: var(--text-mid);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.ios-capture button:hover { border-color: var(--accent); color: var(--accent); }
+.ios-capture-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+  letter-spacing: 0.01em;
+}
+.btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+.btn-primary:active { transform: scale(0.98); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--text-mid);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover { border-color: var(--text-mid); color: var(--text); }
+
+/* Phone mockup */
+.hero-phone {
+  margin-top: 64px;
+  position: relative;
+  animation: fade-up 0.8s 0.5s ease both;
+}
+.phone-frame {
+  width: 260px;
+  background: #000;
+  border-radius: 32px;
+  border: 2px solid #2a2a3a;
+  padding: 20px 16px;
+  margin: 0 auto;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+  position: relative;
+}
+.phone-notch {
+  width: 80px; height: 6px;
+  background: #1a1a2a;
+  border-radius: 3px;
+  margin: 0 auto 16px;
+}
+.phone-screen {
+  background: #000;
+  border-radius: 16px;
+  padding: 16px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+.phone-center-line {
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(240,192,96,0.4), transparent);
+}
+.phone-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  color: #fff;
+  line-height: 1.4;
+  text-align: left;
+  padding-top: 12px;
+  padding-bottom: 48px;
+  width: 100%;
+}
+.phone-mic-dot {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #4caf50;
+  animation: pulse 1.5s infinite;
+}
+.phone-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.8);
+  padding: 8px 12px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  border-top: 1px solid #1a1a1a;
+}
+.phone-bar-btn {
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 5px 10px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+}
+.phone-bar-btn.gold {
+  background: var(--accent);
+  color: #000;
+  font-weight: 600;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION BASE ── */
+section {
+  padding: 100px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.section-desc {
+  font-size: 16px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── HOW IT WORKS ── */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 60px;
+}
+.how-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.how-card:hover {
+  border-color: rgba(240,192,96,0.3);
+  transform: translateY(-4px);
+}
+.how-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.how-card:hover::before { opacity: 0.5; }
+.how-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 300;
+  color: rgba(240,192,96,0.15);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.how-icon { font-size: 32px; margin-bottom: 16px; }
+.how-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.how-desc {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* ── FOR WHO ── */
+.for-section {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 100px 24px;
+}
+.for-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.for-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.3;
+  border-left: 2px solid var(--accent);
+  padding-left: 28px;
+}
+.for-quote span { color: var(--accent); }
+.for-attribution {
+  margin-top: 20px;
+  padding-left: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.for-attribution img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(240,192,96,0.3);
+}
+.for-attribution-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.for-attribution-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+.for-attribution-role {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.for-list { display: flex; flex-direction: column; gap: 20px; }
+.for-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: border-color 0.2s;
+}
+.for-item:hover { border-color: rgba(240,192,96,0.3); }
+.for-item-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.for-item-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.for-item-desc {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+/* ── FEATURES ── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 60px;
+}
+.feat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.feat-card:hover {
+  border-color: rgba(240,192,96,0.25);
+  transform: translateY(-3px);
+}
+.feat-icon { font-size: 28px; margin-bottom: 12px; }
+.feat-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.feat-desc {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+.feat-badge {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 10px;
+  background: rgba(240,192,96,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(240,192,96,0.2);
+}
+.feat-badge.free {
+  background: rgba(76,175,80,0.1);
+  color: #4caf50;
+  border-color: rgba(76,175,80,0.2);
+}
+
+/* Features premium collapsed */
+.features-premium-toggle {
+  text-align: center;
+  margin-top: 32px;
+}
+.features-premium-toggle button {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-mid);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.features-premium-toggle button:hover { border-color: var(--accent); color: var(--accent); }
+#premium-features { display: none; margin-top: 16px; }
+#premium-features.open { display: grid; }
+
+/* ── TESTERS CTA ── */
+.testers-section {
+  background: linear-gradient(135deg, rgba(240,192,96,0.06) 0%, rgba(240,120,64,0.04) 100%);
+  border: 1px solid rgba(240,192,96,0.15);
+  border-radius: 24px;
+  padding: 56px 48px;
+  text-align: center;
+  margin: 80px 24px;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+}
+.testers-section::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: 50%;
+  transform: translateX(-50%);
+  width: 400px; height: 200px;
+  background: radial-gradient(ellipse, rgba(240,192,96,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.testers-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(240,192,96,0.12);
+  border: 1px solid rgba(240,192,96,0.3);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.testers-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.testers-title em { font-style: italic; color: var(--accent); }
+.testers-desc {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto 12px;
+}
+.testers-conditions {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+.testers-conditions a {
+  color: var(--text-dim);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.testers-conditions a:hover { color: var(--text-mid); }
+.testers-spots {
+  font-size: 13px;
+  color: var(--text-mid);
+  margin-top: 20px;
+}
+.testers-spots strong { color: var(--accent); }
+
+/* ── CTA ── */
+.cta-section {
+  text-align: center;
+  padding: 120px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(240,192,96,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section .section-title {
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+.cta-section .section-desc {
+  margin: 0 auto 48px;
+  text-align: center;
+}
+.cta-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--text-mid); }
+.footer-copy {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  .for-inner { grid-template-columns: 1fr; gap: 40px; }
+  footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .testers-section { padding: 40px 24px; margin: 40px 16px; }
+}
+
+/* ── FAQ ── */
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+  transition: color 0.2s;
+  line-height: 1.3;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-icon {
+  font-size: 22px;
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  font-weight: 300;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  padding: 0 0 20px;
+  color: var(--text-mid);
+  font-size: 14px;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+.faq-item.open .faq-a { max-height: 500px; opacity: 1; pointer-events: auto; }
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── MODALS ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-box {
+  background: #13131e;
+  border: 1px solid #2a2a3a;
+  border-radius: 24px;
+  padding: 40px 32px;
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: none;
+  border: none;
+  color: #6a6480;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-emoji { font-size: 32px; margin-bottom: 12px; }
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  color: #ede8f0;
+  margin-bottom: 8px;
+}
+.modal-desc {
+  font-size: 14px;
+  color: #a09ab0;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.modal-input {
+  background: #0a0a0f;
+  border: 1px solid #2a2a3a;
+  border-radius: 10px;
+  color: #ede8f0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  padding: 14px 16px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+.modal-input:focus { border-color: #f0c060; }
+.modal-form { display: flex; flex-direction: column; gap: 12px; }
+.modal-btn {
+  background: #f0c060;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: opacity 0.15s;
+}
+.modal-btn:hover { opacity: 0.9; }
+.modal-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.modal-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+}
+.modal-success-emoji { font-size: 48px; margin-bottom: 16px; }
+.modal-success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: #f0c060;
+  margin-bottom: 8px;
+}
+.modal-success-desc {
+  font-size: 14px;
+  color: #a09ab0;
+  line-height: 1.6;
+}
+
+/* T&C modal */
+.tc-content {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+.tc-content h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: var(--text);
+  margin: 20px 0 8px;
+  font-weight: 400;
+}
+.tc-content h4:first-child { margin-top: 0; }
+.tc-content p { margin-bottom: 8px; }
+.tc-content ul { padding-left: 20px; margin-bottom: 8px; }
+.tc-content ul li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Parlando</a>
+  <div class="nav-links">
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#funciones">Funciones</a>
+    <a href="#descargar" class="nav-cta">Descargar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:100%; padding-top:120px;">
+  <div class="hero-tag" style="opacity:1; transform:none;">
+    <div class="hero-dot"></div>
+    En revisión en Google Play
+  </div>
+  <h1 style="opacity:1; transform:none;">Tu voz,<br><em>sus ojos.</em></h1>
+  <p class="hero-tagline" style="opacity:1; transform:none;">Transcripción en vivo para personas con dificultad auditiva</p>
+  <p class="hero-desc" style="opacity:1; transform:none;">Habla normalmente. El texto aparece grande en su pantalla, en tiempo real. Sin aparatos. Sin que nadie más instale nada.</p>
+  <div class="hero-btns" style="opacity:1; transform:none;">
+    <button onclick="openBetaForm()" class="btn-primary">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 00-.83.22l-1.88 3.24a11.9 11.9 0 00-8.94 0L5.65 5.67a.643.643 0 00-.87-.2c-.28.18-.37.54-.2.83L6.4 9.48A11.86 11.86 0 000 20h24c0-4.45-2.44-8.32-6.4-10.52zM7 17.25c-.69 0-1.25-.56-1.25-1.25S6.31 14.75 7 14.75s1.25.56 1.25 1.25S7.69 17.25 7 17.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+      Notificarme cuando esté disponible
+    </button>
+  </div>
+
+  <!-- iOS capture -->
+  <div class="ios-capture" style="opacity:1; transform:none;">
+    <div class="ios-capture-form">
+      <input type="email" id="ios-email" placeholder="Tu email" autocomplete="email">
+      <button onclick="submitIosCapture()">Avísame en iOS →</button>
+    </div>
+    <span class="ios-capture-label">iOS próximamente — te avisamos cuando llegue</span>
+  </div>
+
+  <!-- Phone mockup -->
+  <div class="hero-phone" style="opacity:1; transform:none;">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-center-line"></div>
+        <div class="phone-mic-dot"></div>
+        <div class="phone-text" id="phone-demo">Hola mamá,<br>¿cómo estás hoy?</div>
+        <div class="phone-bar">
+          <div class="phone-bar-btn">🗑</div>
+          <div class="phone-bar-btn gold">🎙 Escuchando</div>
+          <div class="phone-bar-btn">⚙️</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#como-funciona" class="btn-secondary" style="opacity:1; transform:none; margin-top:24px;">Ver cómo funciona →</a>
+</section>
+
+<div class="divider"></div>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="reveal">
+    <div class="section-label">Cómo funciona</div>
+    <h2 class="section-title">Tres pasos.<br>Sin complicaciones.</h2>
+    <p class="section-desc">Diseñado para que cualquier persona lo use sola, sin ayuda técnica.</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-card reveal">
+      <div class="how-num">01</div>
+      <div class="how-icon">📱</div>
+      <div class="how-title">Instala Parlando</div>
+      <div class="how-desc">Descarga la app en Android. Ábrela y ajusta el tamaño de letra hasta que sea cómodo para leer.</div>
+    </div>
+    <div class="how-card reveal">
+      <div class="how-num">02</div>
+      <div class="how-icon">🎙</div>
+      <div class="how-title">Activa el micrófono</div>
+      <div class="how-desc">Toca el botón, espera el aviso verde "¡Listo!" y empieza a hablar. El texto aparece al instante.</div>
+    </div>
+    <div class="how-card reveal">
+      <div class="how-num">03</div>
+      <div class="how-icon">👁</div>
+      <div class="how-title">Lee en tiempo real</div>
+      <div class="how-desc">Las palabras aparecen grandes en pantalla. Lee, responde, participa. Sin perderte nada.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PARA QUIÉN -->
+<div class="for-section">
+  <div class="for-inner">
+    <div class="reveal">
+      <div class="section-label">Para quién es</div>
+      <p class="for-quote">"Volvió a participar en la conversación familiar<br>después de <span>años de silencio.</span>"</p>
+      <div class="for-attribution">
+        <!-- Cuando tengas la foto: <img src="lucia.jpg" alt="Lucía"> -->
+        <div class="for-attribution-text">
+          <span class="for-attribution-name">Lucía L.</span>
+          <span class="for-attribution-role">Familiar de usuaria, Colombia</span>
+        </div>
+      </div>
+    </div>
+    <div class="for-list reveal">
+      <div class="for-item">
+        <div class="for-item-icon">👴🏽👵🏽</div>
+        <div>
+          <div class="for-item-title">Adultos mayores con pérdida auditiva</div>
+          <div class="for-item-desc">Letra grande, interfaz simple. Funciona aunque no sepan de tecnología.</div>
+        </div>
+      </div>
+      <div class="for-item">
+        <div class="for-item-icon">🦻🏽</div>
+        <div>
+          <div class="for-item-title">Personas sordas o con hipoacusia</div>
+          <div class="for-item-desc">En el banco, en el médico, en familia. Siempre a la mano, sin depender de nadie.</div>
+        </div>
+      </div>
+      <div class="for-item">
+        <div class="for-item-icon">❤️</div>
+        <div>
+          <div class="for-item-title">Familias que quieren reconectar</div>
+          <div class="for-item-desc">Para que ninguna conversación se pierda por una barrera que hoy tiene solución.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FUNCIONES -->
+<section id="funciones">
+  <div class="reveal">
+    <div class="section-label">Funciones</div>
+    <h2 class="section-title">Todo lo que necesitas.<br>Nada que sobre.</h2>
+  </div>
+
+  <!-- Solo las 4 features gratis, siempre visibles -->
+  <div class="features-grid">
+    <div class="feat-card reveal">
+      <div class="feat-icon">🎙</div>
+      <div class="feat-title">Transcripción en vivo</div>
+      <div class="feat-desc">Voz en tiempo real. Desplazamiento estilo teleprompter con velocidad ajustable.</div>
+      <div class="feat-badge free">Gratis</div>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">🔤</div>
+      <div class="feat-title">Texto grande ajustable</div>
+      <div class="feat-desc">Tamaño, fuente y velocidad configurables. La app recuerda tus preferencias.</div>
+      <div class="feat-badge free">Gratis</div>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">📱</div>
+      <div class="feat-title">Pantalla siempre encendida</div>
+      <div class="feat-desc">La pantalla no se apaga mientras está en uso. No pierdas ni una palabra.</div>
+      <div class="feat-badge free">Gratis</div>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">🔊</div>
+      <div class="feat-title">Texto a voz</div>
+      <div class="feat-desc">Escribe y la app habla por ti. Ideal para personas sordomudas — 2 voces incluidas.</div>
+      <div class="feat-badge free">Gratis</div>
+    </div>
+  </div>
+
+  <!-- Toggle para ver las Premium -->
+  <div class="features-premium-toggle reveal">
+    <button onclick="togglePremium(this)">Ver funciones Premium ↓</button>
+  </div>
+
+  <!-- Premium features, colapsadas por defecto -->
+  <div id="premium-features" class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px;">
+    <div class="feat-card">
+      <div class="feat-icon">📋</div>
+      <div class="feat-title">Copiar texto transcrito</div>
+      <div class="feat-desc">Copia y pega la transcripción donde quieras.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">☁️</div>
+      <div class="feat-title">Historial en la nube</div>
+      <div class="feat-desc">Guarda y accede a conversaciones pasadas.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🎧</div>
+      <div class="feat-title">Transcribir audios de WhatsApp</div>
+      <div class="feat-desc">Convierte audios recibidos en texto al instante.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🗣️</div>
+      <div class="feat-title">Identificación de voces</div>
+      <div class="feat-desc">Cada persona que habla aparece en un color diferente.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🎙</div>
+      <div class="feat-title">Grabar conversaciones</div>
+      <div class="feat-desc">Graba, reproduce y revive conversaciones importantes.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🌍</div>
+      <div class="feat-title">Multiidioma</div>
+      <div class="feat-desc">Español, inglés, portugués y más.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📤</div>
+      <div class="feat-title">Compartir transcripción</div>
+      <div class="feat-desc">Envía el texto por WhatsApp, email o cualquier app.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔔</div>
+      <div class="feat-title">Alertas de sonido</div>
+      <div class="feat-desc">Detecta timbre, alarma, tu nombre — y vibra para avisarte.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🎨</div>
+      <div class="feat-title">Fuentes y colores</div>
+      <div class="feat-desc">Más fuentes, colores de texto y fondo.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+    <div class="feat-card music-card">
+      <div class="feat-icon">🎵</div>
+      <div class="feat-title">Siente la música</div>
+      <div class="feat-desc">Detecta la canción que suena, muestra la letra y sincroniza vibración al ritmo del beat.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📡</div>
+      <div class="feat-title">Chat local por WiFi</div>
+      <div class="feat-desc">Varias personas en la misma red pueden chatear simultáneamente.</div>
+      <div class="feat-badge">Premium</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTERS SECTION -->
+<div class="testers-section reveal">
+  <div class="testers-badge">
+    <div class="hero-dot" style="background:var(--accent);"></div>
+    Muy pronto en Google Play
+  </div>
+  <h2 class="testers-title">Sé de los primeros<br><em>en tenerla.</em></h2>
+  <p class="testers-desc">Parlando ya completó su fase de pruebas y está en revisión final de Google Play. Los primeros inscritos en la lista de espera reciben 3 meses de Parlando Premium gratis, cuando esté disponible.</p>
+  <p class="testers-conditions">Al registrarte aceptas las <a onclick="openTCModal()">condiciones de la lista de espera</a>.</p>
+  <button onclick="openBetaForm()" class="btn-primary" style="font-size:16px; padding:16px 36px;">
+    Notificarme del lanzamiento →
+  </button>
+</div>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="cta-section" id="descargar" style="max-width:100%;">
+  <div class="section-label reveal">Muy pronto</div>
+  <h2 class="section-title reveal">Parlando llega<br><em>a Google Play.</em></h2>
+  <p class="section-desc reveal" style="margin: 0 auto 48px; text-align:center;">La app terminó su fase de pruebas y está en revisión final de Google. Deja tu correo y te avisamos apenas esté disponible para descargar.</p>
+  <div class="cta-btns reveal" style="flex-direction:column; align-items:center; gap:20px;">
+    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; align-items:center;">
+      <button onclick="openBetaForm()" style="display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:#000; border:none; border-radius:14px; padding:16px 28px; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; cursor:pointer; transition:transform 0.15s, opacity 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 00-.83.22l-1.88 3.24a11.9 11.9 0 00-8.94 0L5.65 5.67a.643.643 0 00-.87-.2c-.28.18-.37.54-.2.83L6.4 9.48A11.86 11.86 0 000 20h24c0-4.45-2.44-8.32-6.4-10.52zM7 17.25c-.69 0-1.25-.56-1.25-1.25S6.31 14.75 7 14.75s1.25.56 1.25 1.25S7.69 17.25 7 17.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+        Notificarme — Android
+      </button>
+      <div style="display:inline-flex; align-items:center; gap:10px; opacity:0.4; cursor:default; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:16px 28px; font-family:'DM Sans',sans-serif; font-size:15px; color:var(--text-mid);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        iOS · Próximamente
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="max-width:780px; margin:0 auto; padding:80px 24px;">
+  <div class="reveal" style="text-align:center; margin-bottom:48px;">
+    <div class="section-label" style="justify-content:center; display:flex;">Preguntas frecuentes</div>
+    <h2 class="section-title">¿Tienes dudas?</h2>
+  </div>
+
+  <div id="faq-list" class="reveal">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Qué pasa después de registrarme en la lista de espera?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Te escribimos a tu correo apenas Parlando esté disponible en Google Play, con el link directo para descargarla.</p>
+        <p>Si tienes dudas mientras tanto, escríbenos a <a href="mailto:hola@parlandoapp.com" style="color:var(--accent)">hola@parlandoapp.com</a>.</p>
+        <p>Los primeros inscritos reciben 3 meses de Premium gratis cuando la suscripción esté disponible.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Es gratis?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Sí. La versión gratuita incluye transcripción en vivo ilimitada, texto a voz, pantalla siempre encendida y ajuste de letra. Siempre será gratis para quien lo necesite.</p>
+        <p>La versión Premium agrega funciones avanzadas como historial, voces premium, transcripción de audios de WhatsApp y más.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿El micrófono no reconoce mi voz. Qué hago?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Asegúrate de que Parlando tiene permisos para usar el micrófono mientras está abierta.</p>
+        <p><strong>Android:</strong> Ajustes → Aplicaciones → Parlando → Permisos → Micrófono → Permitir siempre.</p>
+        <p>También asegúrate de hablar claro y directo al micrófono del celu, especialmente en ambientes ruidosos.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Necesita internet para funcionar?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Sí. El reconocimiento de voz usa los servidores de Google en tiempo real, por lo que necesita conexión a internet (WiFi o datos móviles). Una vez conectada, el consumo de datos es muy bajo.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Funciona con cualquier acento?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Sí. Parlando está optimizada para español latinoamericano pero funciona con todos los acentos del español. Habla con naturalidad — no necesitas cambiar tu forma de hablar.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Está disponible para iPhone?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Próximamente. Actualmente Parlando está disponible para Android. La versión para iOS está en desarrollo y llegará pronto. Deja tu email en la parte de arriba y te avisamos cuando esté lista.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Mis conversaciones se guardan?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>En la versión gratuita el texto desaparece al cerrar la app. La versión Premium incluye historial y backup en la nube para que puedas revisar conversaciones pasadas.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>¿Funciona en ambientes ruidosos?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Funciona mejor en ambientes tranquilos. En lugares ruidosos puede haber algunos errores en la transcripción. Para mejores resultados, habla directamente al micrófono y reduce el ruido de fondo cuando sea posible.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Parlando</a>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/parlando.app" target="_blank">Instagram</a>
+    <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>
+    <a onclick="openTCModal()" style="cursor:pointer;">Términos de la lista de espera</a>
+  </div>
+  <div class="footer-copy">© 2026 Parlando · Tu voz, sus ojos.</div>
+</footer>
+
+<!-- BETA MODAL -->
+<div id="beta-modal" class="modal-overlay">
+  <div class="modal-box">
+    <button onclick="closeBetaForm()" class="modal-close">×</button>
+    <div class="modal-emoji">🎙</div>
+    <h3 class="modal-title">Quiero enterarme del lanzamiento</h3>
+    <p class="modal-desc">Parlando ya terminó su fase de pruebas y está en revisión final de Google Play. Te avisamos por correo apenas esté disponible. Los primeros inscritos reciben 3 meses de Premium gratis.</p>
+    <div id="beta-form" class="modal-form">
+      <input id="beta-name" type="text" placeholder="Tu nombre" class="modal-input">
+      <input id="beta-email" type="email" placeholder="Tu correo electrónico" class="modal-input" autocomplete="email">
+      <label style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:var(--text-dim); cursor:pointer; line-height:1.5;">
+        <input type="checkbox" id="beta-consent" style="margin-top:2px; flex-shrink:0; accent-color:var(--accent);">
+        Acepto las <a onclick="openTCModal()" style="color:var(--accent); cursor:pointer; margin: 0 3px;">condiciones de la lista de espera</a> y el tratamiento de mis datos para recibir el aviso de lanzamiento y comunicaciones de Parlando.
+      </label>
+      <button onclick="submitBeta()" class="modal-btn">
+        Notificarme del lanzamiento →
+      </button>
+    </div>
+    <div id="beta-success" class="modal-success">
+      <div class="modal-success-emoji">🎉</div>
+      <p class="modal-success-title">¡Listo!</p>
+      <p class="modal-success-desc">Te escribimos apenas Parlando esté disponible en Google Play. Revisa también tu carpeta de spam.<br><br>Gracias por ser parte de Parlando desde el principio.</p>
+    </div>
+  </div>
+</div>
+
+<!-- iOS MODAL de confirmación -->
+<div id="ios-modal" class="modal-overlay">
+  <div class="modal-box" style="max-width:380px;">
+    <button onclick="closeModal('ios-modal')" class="modal-close">×</button>
+    <div class="modal-emoji">🍎</div>
+    <h3 class="modal-title">¡Anotado!</h3>
+    <p class="modal-desc">Te avisamos cuando Parlando llegue a iOS. Revisa también tu carpeta de spam.</p>
+  </div>
+</div>
+
+<!-- T&C MODAL -->
+<div id="tc-modal" class="modal-overlay">
+  <div class="modal-box" style="max-width:560px;">
+    <button onclick="closeModal('tc-modal')" class="modal-close">×</button>
+    <div class="modal-emoji">📋</div>
+    <h3 class="modal-title">Lista de espera de lanzamiento</h3>
+    <p class="modal-desc">Condiciones de participación y tratamiento de datos · Parlando</p>
+    <div class="tc-content">
+      <h4>1. Qué es la lista de espera</h4>
+      <p>Parlando completó su fase de pruebas cerrada y está en revisión final de Google Play. La lista de espera te avisa por correo apenas la app esté disponible para descargar.</p>
+
+      <h4>2. Qué recibes al inscribirte</h4>
+      <ul>
+        <li>Un correo apenas Parlando esté disponible en Google Play, con el link directo de descarga.</li>
+        <li>3 meses de Parlando Premium gratis, entregados una vez que la función de suscripción esté disponible en la app.</li>
+      </ul>
+
+      <h4>3. Sobre el acceso Premium</h4>
+      <p>Los 3 meses de Premium son un beneficio condicional: se activan únicamente cuando la función de suscripción esté disponible en la app. No hay fecha garantizada para el lanzamiento de la suscripción. El acceso Premium no es transferible ni canjeable por dinero.</p>
+
+      <h4>4. Tratamiento de datos personales</h4>
+      <p>Recopilamos tu nombre y correo electrónico exclusivamente para avisarte del lanzamiento y enviarte comunicaciones de Parlando. Tus datos no se comparten con terceros ni se usan para publicidad. Puedes solicitar la eliminación de tus datos en cualquier momento escribiendo a <a href="mailto:hola@parlandoapp.com" style="color:var(--accent)">hola@parlandoapp.com</a>.</p>
+      <p>Al inscribirte aceptas este tratamiento de datos conforme a lo establecido aquí (habeas data).</p>
+
+      <h4>5. Contacto</h4>
+      <p>Para cualquier consulta: <a href="mailto:hola@parlandoapp.com" style="color:var(--accent)">hola@parlandoapp.com</a></p>
+    </div>
+    <div style="margin-top:24px; text-align:center;">
+      <button onclick="closeModal('tc-modal')" class="modal-btn">Entendido</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Phone demo text rotation
+var phrases = [
+  "Hola mamá,\n¿cómo estás hoy?",
+  "¿Quieres\nuna taza de café?",
+  "Te queremos\nmucho.",
+  "¿Cómo\ndormiste?",
+  "La familia\nviene hoy.",
+  "Hola abuelita,\n¡qué rico verte!",
+];
+var phraseIdx = 0;
+var phoneDemo = document.getElementById("phone-demo");
+
+function rotatePhrases() {
+  phoneDemo.style.opacity = "0";
+  phoneDemo.style.transition = "opacity 0.5s";
+  setTimeout(function() {
+    phraseIdx = (phraseIdx + 1) % phrases.length;
+    phoneDemo.innerHTML = phrases[phraseIdx].replace(/\n/g, "<br>");
+    phoneDemo.style.opacity = "1";
+  }, 500);
+}
+setInterval(rotatePhrases, 3000);
+
+// Beta modal
+function openBetaForm() {
+  var modal = document.getElementById("beta-modal");
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+function closeBetaForm() {
+  closeModal("beta-modal");
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+  document.body.style.overflow = "";
+}
+function openTCModal() {
+  var betaOpen = document.getElementById("beta-modal").style.display === "flex";
+  if (!betaOpen) {
+    document.getElementById("tc-modal").style.display = "flex";
+    document.body.style.overflow = "hidden";
+  } else {
+    // Si beta está abierto, abrir TC encima
+    document.getElementById("tc-modal").style.display = "flex";
+    document.getElementById("tc-modal").style.zIndex = "300";
+  }
+}
+
+function submitBeta() {
+  var name    = document.getElementById("beta-name").value.trim();
+  var email   = document.getElementById("beta-email").value.trim();
+  var consent = document.getElementById("beta-consent").checked;
+  if (!name || !email) { alert("Por favor completa tu nombre y correo."); return; }
+  if (!consent) { alert("Debes aceptar las condiciones para continuar."); return; }
+  var btn = document.querySelector("#beta-form .modal-btn");
+  btn.textContent = "Enviando...";
+  btn.disabled = true;
+  fetch("https://formspree.io/f/mpqbowke", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify({ nombre: name, email: email, tipo: "lista-espera", consentimiento: true })
+  })
+  .then(function(r) {
+    if (r.ok) {
+      document.getElementById("beta-form").style.display = "none";
+      document.getElementById("beta-success").style.display = "block";
+    } else {
+      alert("Hubo un error. Intenta de nuevo.");
+      btn.textContent = "Notificarme del lanzamiento →";
+      btn.disabled = false;
+    }
+  })
+  .catch(function() {
+    alert("Hubo un error de conexión. Intenta de nuevo.");
+    btn.textContent = "Notificarme del lanzamiento →";
+    btn.disabled = false;
+  });
+}
+
+// iOS capture
+function submitIosCapture() {
+  var email = document.getElementById("ios-email").value.trim();
+  if (!email || !email.includes("@")) { alert("Ingresa un correo válido."); return; }
+  var btn = document.querySelector(".ios-capture button");
+  btn.textContent = "Enviando...";
+  btn.disabled = true;
+  fetch("https://formspree.io/f/mpqbowke", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify({ email: email, tipo: "ios-waitlist" })
+  })
+  .then(function(r) {
+    if (r.ok) {
+      document.getElementById("ios-modal").style.display = "flex";
+      document.body.style.overflow = "hidden";
+      document.getElementById("ios-email").value = "";
+      btn.textContent = "Avísame en iOS →";
+      btn.disabled = false;
+    } else {
+      btn.textContent = "Avísame en iOS →";
+      btn.disabled = false;
+    }
+  })
+  .catch(function() {
+    btn.textContent = "Avísame en iOS →";
+    btn.disabled = false;
+  });
+}
+
+// Premium features toggle
+function togglePremium(btn) {
+  var el = document.getElementById("premium-features");
+  var isOpen = el.classList.contains("open");
+  if (isOpen) {
+    el.classList.remove("open");
+    el.style.display = "none";
+    btn.textContent = "Ver funciones Premium ↓";
+  } else {
+    el.classList.add("open");
+    el.style.display = "grid";
+    btn.textContent = "Ocultar funciones Premium ↑";
+  }
+}
+
+// Close modals clicking backdrop
+document.querySelectorAll(".modal-overlay").forEach(function(modal) {
+  modal.addEventListener("click", function(e) {
+    if (e.target === this) {
+      this.style.display = "none";
+      document.body.style.overflow = "";
+    }
+  });
+});
+
+// FAQ toggle
+function toggleFaq(btn) {
+  var item = btn.parentElement;
+  var isOpen = item.classList.contains("open");
+  document.querySelectorAll(".faq-item").forEach(function(i) { i.classList.remove("open"); });
+  if (!isOpen) item.classList.add("open");
+}
+
+// Scroll reveal
+var reveals = document.querySelectorAll(".reveal");
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) e.target.classList.add("visible");
+  });
+}, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
+reveals.forEach(function(r) { observer.observe(r); });
+</script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad — Parlando</title>
+<meta name="description" content="Política de privacidad de Parlando, app de transcripción en vivo para personas con dificultad auditiva.">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #0f0f18;
+  --surface: #13131e;
+  --border: #1e1e2e;
+  --accent: #f0c060;
+  --text: #ede8f0;
+  --text-dim: #6a6480;
+  --text-mid: #a09ab0;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(10,10,15,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+.nav-back {
+  font-size: 13px;
+  color: var(--text-mid);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--text); }
+
+/* LANG TOGGLE */
+.lang-toggle {
+  display: flex;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 0 auto 48px;
+  width: fit-content;
+}
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--text-mid);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-transform: uppercase;
+}
+.lang-btn.active {
+  background: var(--accent);
+  color: #000;
+}
+
+/* CONTENT */
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+}
+.page-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.page-date {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 56px;
+}
+
+.policy-section {
+  margin-bottom: 40px;
+}
+.policy-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.policy-section p {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.policy-section ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+.policy-section ul li {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-bottom: 6px;
+}
+.policy-section a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(240,192,96,0.3);
+  transition: border-color 0.2s;
+}
+.policy-section a:hover { border-color: var(--accent); }
+.highlight-box {
+  background: rgba(240,192,96,0.05);
+  border: 1px solid rgba(240,192,96,0.15);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 20px 0;
+}
+.highlight-box p {
+  margin-bottom: 0;
+  color: var(--text);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 100%;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-copy { font-size: 12px; color: var(--text-dim); }
+
+/* Lang sections */
+#content-en { display: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Parlando</a>
+  <a href="/" class="nav-back">← Volver al inicio</a>
+</nav>
+
+<div class="wrapper">
+  <div class="page-label" id="label-es">Política de Privacidad</div>
+  <div class="page-label" id="label-en" style="display:none">Privacy Policy</div>
+
+  <h1 class="page-title" id="title-es">Tu privacidad<br>es nuestra prioridad.</h1>
+  <h1 class="page-title" id="title-en" style="display:none">Your privacy<br>is our priority.</h1>
+
+  <p class="page-date" id="date-es">Última actualización: junio 2026</p>
+  <p class="page-date" id="date-en" style="display:none">Last updated: June 2026</p>
+
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('es')">Español</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+  </div>
+
+  <!-- ESPAÑOL -->
+  <div id="content-es">
+
+    <div class="highlight-box">
+      <p>Parlando no vende, comparte ni monetiza tus datos personales. Esta política explica qué información recopilamos, para qué la usamos y cómo puedes controlarla.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>1. Quiénes somos</h2>
+      <p>Parlando es una aplicación de transcripción en vivo desarrollada por PrimiTribu, con sede en Bogotá, Colombia. Puedes contactarnos en <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>2. Qué información recopilamos</h2>
+      <p>Parlando recopila únicamente la información mínima necesaria para funcionar:</p>
+      <ul>
+        <li><strong>Audio en tiempo real:</strong> el micrófono se activa solo cuando el usuario toca el botón "Escuchar". El audio se procesa en tiempo real a través de la API de reconocimiento de voz de Google y no se almacena en ningún servidor propio.</li>
+        <li><strong>Texto transcrito:</strong> las transcripciones se muestran en pantalla y se almacenan temporalmente en la memoria del dispositivo. En la versión gratuita, el texto desaparece al cerrar la app. No se envía a servidores externos.</li>
+        <li><strong>Preferencias del usuario:</strong> ajustes como tamaño de fuente, tipo de fuente y velocidad de scroll se guardan localmente en el dispositivo mediante AsyncStorage. No se sincronizan con servidores externos.</li>
+        <li><strong>Nombre de usuario (opcional):</strong> si el usuario elige ingresar su nombre, se guarda localmente en el dispositivo y se usa únicamente para personalizar el saludo en la app.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>3. Permisos que solicita la app</h2>
+      <ul>
+        <li><strong>Micrófono (RECORD_AUDIO):</strong> necesario para la función de transcripción en vivo. Solo se activa cuando el usuario lo solicita explícitamente.</li>
+        <li><strong>Internet (INTERNET):</strong> necesario para el reconocimiento de voz, que utiliza los servicios de Google Speech Recognition.</li>
+        <li><strong>Pantalla encendida (WAKE_LOCK):</strong> mantiene la pantalla activa mientras la app está en uso, para que el texto sea siempre legible.</li>
+        <li><strong>Vibración (VIBRATE):</strong> usado para feedback háptico opcional.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>4. Servicios de terceros</h2>
+      <p>Parlando utiliza los siguientes servicios de terceros:</p>
+      <ul>
+        <li><strong>Google Speech Recognition API:</strong> procesa el audio en tiempo real para la transcripción. El audio se envía a los servidores de Google para su procesamiento. Consulta la <a href="https://policies.google.com/privacy" target="_blank">política de privacidad de Google</a>.</li>
+        <li><strong>Expo / React Native:</strong> plataforma de desarrollo. No recopila datos de usuarios finales por defecto.</li>
+      </ul>
+      <p>Parlando no integra publicidad, analíticas de terceros, ni plataformas de seguimiento.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>5. Almacenamiento y seguridad</h2>
+      <p>Todos los datos del usuario (preferencias, nombre) se almacenan exclusivamente en el dispositivo local. No se transmiten a servidores propios de Parlando.</p>
+      <p>Las transcripciones de voz no se guardan en ningún servidor. El procesamiento ocurre en tiempo real y el resultado se muestra en pantalla.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>6. Menores de edad</h2>
+      <p>Parlando no está dirigida a menores de 13 años y no recopila conscientemente información de menores. Si eres padre o tutor y crees que tu hijo ha proporcionado información personal, contáctanos en <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>7. Tus derechos (Habeas Data)</h2>
+      <p>De acuerdo con la Ley 1581 de 2012 de Colombia y normativas aplicables, tienes derecho a:</p>
+      <ul>
+        <li>Conocer qué datos tuyos tenemos almacenados.</li>
+        <li>Solicitar la corrección de datos incorrectos.</li>
+        <li>Solicitar la eliminación de tus datos.</li>
+        <li>Revocar la autorización para el tratamiento de tus datos.</li>
+      </ul>
+      <p>Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>. Respondemos en un plazo máximo de 10 días hábiles.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>8. Cambios a esta política</h2>
+      <p>Podemos actualizar esta política ocasionalmente. Cuando lo hagamos, actualizaremos la fecha en la parte superior. Si los cambios son significativos, te notificaremos a través de la app o por correo electrónico si nos lo has proporcionado.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>9. Contacto</h2>
+      <p>Si tienes preguntas sobre esta política de privacidad, escríbenos a <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>.</p>
+      <p>PrimiTribu · Bogotá, Colombia · <a href="https://parlandoapp.com">parlandoapp.com</a></p>
+    </div>
+
+  </div>
+
+  <!-- ENGLISH -->
+  <div id="content-en" style="display:none">
+
+    <div class="highlight-box">
+      <p>Parlando does not sell, share, or monetize your personal data. This policy explains what information we collect, how we use it, and how you can control it.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>1. Who we are</h2>
+      <p>Parlando is a live transcription app developed by PrimiTribu, based in Bogotá, Colombia. You can reach us at <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>2. Information we collect</h2>
+      <p>Parlando collects only the minimum information necessary to function:</p>
+      <ul>
+        <li><strong>Real-time audio:</strong> the microphone activates only when the user taps the "Listen" button. Audio is processed in real time through Google's speech recognition API and is not stored on any proprietary server.</li>
+        <li><strong>Transcribed text:</strong> transcriptions are displayed on screen and stored temporarily in device memory. In the free version, text disappears when the app is closed. It is not sent to external servers.</li>
+        <li><strong>User preferences:</strong> settings such as font size, font type, and scroll speed are saved locally on the device using AsyncStorage. They are not synced with external servers.</li>
+        <li><strong>Username (optional):</strong> if the user chooses to enter their name, it is saved locally on the device and used only to personalize the greeting in the app.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>3. Permissions requested by the app</h2>
+      <ul>
+        <li><strong>Microphone (RECORD_AUDIO):</strong> required for the live transcription feature. Activated only when explicitly requested by the user.</li>
+        <li><strong>Internet (INTERNET):</strong> required for speech recognition, which uses Google Speech Recognition services.</li>
+        <li><strong>Screen wake lock (WAKE_LOCK):</strong> keeps the screen on while the app is in use so text remains readable at all times.</li>
+        <li><strong>Vibration (VIBRATE):</strong> used for optional haptic feedback.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>4. Third-party services</h2>
+      <p>Parlando uses the following third-party services:</p>
+      <ul>
+        <li><strong>Google Speech Recognition API:</strong> processes audio in real time for transcription. Audio is sent to Google's servers for processing. See <a href="https://policies.google.com/privacy" target="_blank">Google's privacy policy</a>.</li>
+        <li><strong>Expo / React Native:</strong> development platform. Does not collect end-user data by default.</li>
+      </ul>
+      <p>Parlando does not integrate advertising, third-party analytics, or tracking platforms.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>5. Storage and security</h2>
+      <p>All user data (preferences, username) is stored exclusively on the local device. It is not transmitted to Parlando's own servers.</p>
+      <p>Voice transcriptions are not saved on any server. Processing happens in real time and the result is displayed on screen.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>6. Children's privacy</h2>
+      <p>Parlando is not directed at children under 13 and does not knowingly collect information from minors. If you are a parent or guardian and believe your child has provided personal information, contact us at <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>7. Your rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Know what data we hold about you.</li>
+        <li>Request correction of inaccurate data.</li>
+        <li>Request deletion of your data.</li>
+        <li>Withdraw consent for data processing.</li>
+      </ul>
+      <p>To exercise any of these rights, write to us at <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>. We respond within 10 business days.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>8. Changes to this policy</h2>
+      <p>We may update this policy from time to time. When we do, we will update the date at the top. If changes are significant, we will notify you through the app or by email if you have provided it.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>9. Contact</h2>
+      <p>If you have questions about this privacy policy, write to us at <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>.</p>
+      <p>PrimiTribu · Bogotá, Colombia · <a href="https://parlandoapp.com">parlandoapp.com</a></p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">Parlando</a>
+  <div class="footer-copy">© 2026 Parlando · Tu voz, sus ojos.</div>
+</footer>
+
+<script>
+function setLang(lang) {
+  var isEs = lang === 'es';
+  document.getElementById('content-es').style.display = isEs ? 'block' : 'none';
+  document.getElementById('content-en').style.display = isEs ? 'none' : 'block';
+  document.getElementById('label-es').style.display = isEs ? 'block' : 'none';
+  document.getElementById('label-en').style.display = isEs ? 'none' : 'block';
+  document.getElementById('title-es').style.display = isEs ? 'block' : 'none';
+  document.getElementById('title-en').style.display = isEs ? 'none' : 'block';
+  document.getElementById('date-es').style.display = isEs ? 'block' : 'none';
+  document.getElementById('date-en').style.display = isEs ? 'none' : 'block';
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  event.target.classList.add('active');
+  document.querySelector('.nav-back').textContent = isEs ? '← Volver al inicio' : '← Back to home';
+}
+</script>
+</body>
+</html>
