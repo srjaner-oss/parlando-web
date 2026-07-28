@@ -923,26 +923,11 @@ footer {
 <section class="hero" style="max-width:100%; padding-top:120px;">
   <div class="hero-tag" style="opacity:1; transform:none;">
     <div class="hero-dot"></div>
-    En revisión en Google Play
+    Ya disponible en Google Play
   </div>
   <h1 style="opacity:1; transform:none;">Tu voz,<br><em>sus ojos.</em></h1>
   <p class="hero-tagline" style="opacity:1; transform:none;">Transcripción en vivo para personas con dificultad auditiva</p>
   <p class="hero-desc" style="opacity:1; transform:none;">Habla normalmente. El texto aparece grande en su pantalla, en tiempo real. Sin aparatos. Sin que nadie más instale nada.</p>
-  <div class="hero-btns" style="opacity:1; transform:none;">
-    <button onclick="openBetaForm()" class="btn-primary">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 00-.83.22l-1.88 3.24a11.9 11.9 0 00-8.94 0L5.65 5.67a.643.643 0 00-.87-.2c-.28.18-.37.54-.2.83L6.4 9.48A11.86 11.86 0 000 20h24c0-4.45-2.44-8.32-6.4-10.52zM7 17.25c-.69 0-1.25-.56-1.25-1.25S6.31 14.75 7 14.75s1.25.56 1.25 1.25S7.69 17.25 7 17.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
-      Notificarme cuando esté disponible
-    </button>
-  </div>
-
-  <!-- iOS capture -->
-  <div class="ios-capture" style="opacity:1; transform:none;">
-    <div class="ios-capture-form">
-      <input type="email" id="ios-email" placeholder="Tu email" autocomplete="email">
-      <button onclick="submitIosCapture()">Avísame en iOS →</button>
-    </div>
-    <span class="ios-capture-label">iOS próximamente — te avisamos cuando llegue</span>
-  </div>
 
   <!-- Phone mockup -->
   <div class="hero-phone" style="opacity:1; transform:none;">
@@ -1150,36 +1135,18 @@ footer {
 
 <div class="divider"></div>
 
-<!-- TESTERS SECTION -->
-<div class="testers-section reveal">
-  <div class="testers-badge">
-    <div class="hero-dot" style="background:var(--accent);"></div>
-    Muy pronto en Google Play
-  </div>
-  <h2 class="testers-title">Sé de los primeros<br><em>en tenerla.</em></h2>
-  <p class="testers-desc">Parlando ya completó su fase de pruebas y está en revisión final de Google Play. Los primeros inscritos en la lista de espera reciben 3 meses de Parlando Premium gratis, cuando esté disponible.</p>
-  <p class="testers-conditions">Al registrarte aceptas las <a onclick="openTCModal()">condiciones de la lista de espera</a>.</p>
-  <button onclick="openBetaForm()" class="btn-primary" style="font-size:16px; padding:16px 36px;">
-    Notificarme del lanzamiento →
-  </button>
-</div>
-
-<div class="divider"></div>
-
-<!-- CTA -->
+<!-- DESCARGA -->
 <section class="cta-section" id="descargar" style="max-width:100%;">
-  <div class="section-label reveal">Muy pronto</div>
-  <h2 class="section-title reveal">Parlando llega<br><em>a Google Play.</em></h2>
-  <p class="section-desc reveal" style="margin: 0 auto 48px; text-align:center;">La app terminó su fase de pruebas y está en revisión final de Google. Deja tu correo y te avisamos apenas esté disponible para descargar.</p>
+  <div class="section-label reveal">Descarga</div>
+  <h2 class="section-title reveal">Descárgala ahora</h2>
+  <p class="section-desc reveal" style="margin: 0 auto 48px; text-align:center;">Transcripción de voz en tiempo real, gratis.</p>
   <div class="cta-btns reveal" style="flex-direction:column; align-items:center; gap:20px;">
-    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; align-items:center;">
-      <button onclick="openBetaForm()" style="display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:#000; border:none; border-radius:14px; padding:16px 28px; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; cursor:pointer; transition:transform 0.15s, opacity 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 00-.83.22l-1.88 3.24a11.9 11.9 0 00-8.94 0L5.65 5.67a.643.643 0 00-.87-.2c-.28.18-.37.54-.2.83L6.4 9.48A11.86 11.86 0 000 20h24c0-4.45-2.44-8.32-6.4-10.52zM7 17.25c-.69 0-1.25-.56-1.25-1.25S6.31 14.75 7 14.75s1.25.56 1.25 1.25S7.69 17.25 7 17.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
-        Notificarme — Android
-      </button>
-      <div style="display:inline-flex; align-items:center; gap:10px; opacity:0.4; cursor:default; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:16px 28px; font-family:'DM Sans',sans-serif; font-size:15px; color:var(--text-mid);">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        iOS · Próximamente
+    <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; align-items:center;">
+      <a href="https://play.google.com/store/apps/details?id=com.primitribu.parlando" target="_blank" rel="noopener" style="display:block; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+        <img src="assets/badge-google-play.svg" alt="Disponible en Google Play" style="height:56px; display:block;">
+      </a>
+      <div aria-disabled="true" style="display:block; opacity:0.4; cursor:default;">
+        <img src="assets/badge-app-store.svg" alt="Próximamente en App Store" style="height:56px; display:block;">
       </div>
     </div>
   </div>
@@ -1312,7 +1279,7 @@ footer {
   <div class="footer-copy">© 2026 Parlando · Tu voz, sus ojos.</div>
 </footer>
 
-<!-- BETA MODAL -->
+<!-- BETA MODAL — comentado: ya nadie llama a openBetaForm(), app publicada en Google Play
 <div id="beta-modal" class="modal-overlay">
   <div class="modal-box">
     <button onclick="closeBetaForm()" class="modal-close">×</button>
@@ -1324,10 +1291,10 @@ footer {
       <input id="beta-email" type="email" placeholder="Tu correo electrónico" class="modal-input" autocomplete="email">
       <label style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:var(--text-dim); cursor:pointer; line-height:1.5;">
         <input type="checkbox" id="beta-consent" style="margin-top:2px; flex-shrink:0; accent-color:var(--accent);">
-        Acepto las <a onclick="openTCModal()" style="color:var(--accent); cursor:pointer; margin: 0 3px;">condiciones de la lista de espera</a> y el tratamiento de mis datos para recibir el aviso de lanzamiento y comunicaciones de Parlando.
+        Acepto las condiciones de la lista de espera y el tratamiento de mis datos para recibir el aviso de lanzamiento y comunicaciones de Parlando.
       </label>
       <button onclick="submitBeta()" class="modal-btn">
-        Notificarme del lanzamiento →
+        Notificarme del lanzamiento
       </button>
     </div>
     <div id="beta-success" class="modal-success">
@@ -1337,6 +1304,7 @@ footer {
     </div>
   </div>
 </div>
+-->
 
 <!-- iOS MODAL de confirmación -->
 <div id="ios-modal" class="modal-overlay">
@@ -1405,7 +1373,8 @@ function rotatePhrases() {
 }
 setInterval(rotatePhrases, 3000);
 
-// Beta modal
+// Beta modal — comentado: modal removido, app publicada en Google Play
+/*
 function openBetaForm() {
   var modal = document.getElementById("beta-modal");
   modal.style.display = "flex";
@@ -1414,22 +1383,6 @@ function openBetaForm() {
 function closeBetaForm() {
   closeModal("beta-modal");
 }
-function closeModal(id) {
-  document.getElementById(id).style.display = "none";
-  document.body.style.overflow = "";
-}
-function openTCModal() {
-  var betaOpen = document.getElementById("beta-modal").style.display === "flex";
-  if (!betaOpen) {
-    document.getElementById("tc-modal").style.display = "flex";
-    document.body.style.overflow = "hidden";
-  } else {
-    // Si beta está abierto, abrir TC encima
-    document.getElementById("tc-modal").style.display = "flex";
-    document.getElementById("tc-modal").style.zIndex = "300";
-  }
-}
-
 function submitBeta() {
   var name    = document.getElementById("beta-name").value.trim();
   var email   = document.getElementById("beta-email").value.trim();
@@ -1460,35 +1413,15 @@ function submitBeta() {
     btn.disabled = false;
   });
 }
+*/
 
-// iOS capture
-function submitIosCapture() {
-  var email = document.getElementById("ios-email").value.trim();
-  if (!email || !email.includes("@")) { alert("Ingresa un correo válido."); return; }
-  var btn = document.querySelector(".ios-capture button");
-  btn.textContent = "Enviando...";
-  btn.disabled = true;
-  fetch("https://formspree.io/f/mpqbowke", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body: JSON.stringify({ email: email, tipo: "ios-waitlist" })
-  })
-  .then(function(r) {
-    if (r.ok) {
-      document.getElementById("ios-modal").style.display = "flex";
-      document.body.style.overflow = "hidden";
-      document.getElementById("ios-email").value = "";
-      btn.textContent = "Avísame en iOS →";
-      btn.disabled = false;
-    } else {
-      btn.textContent = "Avísame en iOS →";
-      btn.disabled = false;
-    }
-  })
-  .catch(function() {
-    btn.textContent = "Avísame en iOS →";
-    btn.disabled = false;
-  });
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+  document.body.style.overflow = "";
+}
+function openTCModal() {
+  document.getElementById("tc-modal").style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
 
 // Newsletter capture
