@@ -728,15 +728,15 @@ footer {
   flex-wrap: wrap;
 }
 .footer-links a {
-  color: var(--text-dim);
+  color: var(--text-mid);
   text-decoration: none;
   font-size: 13px;
   transition: color 0.2s;
 }
-.footer-links a:hover { color: var(--text-mid); }
+.footer-links a:hover { color: var(--accent); }
 .footer-copy {
   font-size: 12px;
-  color: var(--text-dim);
+  color: var(--text-mid);
 }
 
 /* ── RESPONSIVE ── */
@@ -1175,10 +1175,10 @@ footer {
   <div class="cta-btns reveal" style="flex-direction:column; align-items:center; gap:20px;">
     <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; align-items:center;">
       <a href="https://play.google.com/store/apps/details?id=com.primitribu.parlando" target="_blank" rel="noopener" style="display:block; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-        <img src="assets/badge-google-play.svg" alt="Disponible en Google Play" style="height:56px; display:block;">
+        <img src="assets/badge-google-play.svg" alt="Disponible en Google Play" width="189" height="56" style="height:56px; display:block;">
       </a>
       <a href="https://apps.apple.com/co/app/parlando/id6791811825" target="_blank" rel="noopener" style="display:block; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-        <img src="assets/badge-app-store.svg" alt="Disponible en App Store" style="height:56px; display:block;">
+        <img src="assets/badge-app-store.svg" alt="Disponible en App Store" width="200" height="60" style="height:56px; display:block;">
       </a>
     </div>
   </div>
@@ -1292,6 +1292,7 @@ footer {
   <div class="ios-capture" style="margin-top:32px;">
     <div class="ios-capture-form">
       <input id="newsletter-email" type="email" placeholder="tu@correo.com" autocomplete="email">
+      <input type="text" name="_gotcha" id="newsletter-gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <button onclick="submitNewsletter(this)">Quiero enterarme</button>
     </div>
     <span id="newsletter-msg" class="ios-capture-label" style="display:none;"></span>
@@ -1356,6 +1357,7 @@ function closeModal(id) {
 // Newsletter capture
 function submitNewsletter(btn) {
   var email = document.getElementById("newsletter-email").value.trim();
+  var gotcha = document.getElementById("newsletter-gotcha").value;
   var msg = document.getElementById("newsletter-msg");
   if (!email || !email.includes("@")) { alert("Ingresa un correo válido."); return; }
   btn.textContent = "Enviando...";
@@ -1363,7 +1365,7 @@ function submitNewsletter(btn) {
   fetch("https://formspree.io/f/mpqbowke", {
     method: "POST",
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body: JSON.stringify({ email: email, tipo: "newsletter", consentimiento: true })
+    body: JSON.stringify({ email: email, tipo: "newsletter", consentimiento: true, _gotcha: gotcha })
   })
   .then(function(r) {
     if (r.ok) {
