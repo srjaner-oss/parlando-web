@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG1SZTK330"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XG1SZTK330');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Por qué gritarle a alguien con dificultad auditiva no funciona (y qué sí) — Parlando</title>
+<meta name="description" content="Gritar distorsiona en vez de ayudar. Qué dice la evidencia sobre cómo comunicarte con alguien que tiene pérdida auditiva: volumen, lectura de la cara, ruido de fondo y reformular.">
+<meta property="og:title" content="Por qué gritarle a alguien con dificultad auditiva no funciona (y qué sí) — Parlando">
+<meta property="og:description" content="Qué dice la evidencia sobre cómo comunicarte con alguien que tiene pérdida auditiva.">
+<meta property="og:image" content="https://parlandoapp.com/og.jpg">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #0f0f18;
+  --surface: #13131e;
+  --border: #1e1e2e;
+  --accent: #f0c060;
+  --text: #ede8f0;
+  --text-dim: #6a6480;
+  --text-mid: #a09ab0;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(10,10,15,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+.nav-back {
+  font-size: 13px;
+  color: var(--text-mid);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--text); }
+
+/* CONTENT */
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+}
+.page-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 40px;
+}
+
+/* ARTICLE */
+.article-lead p {
+  font-size: 17px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.article-section { margin-bottom: 44px; }
+.article-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.article-section p {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+/* CIERRE */
+.article-cierre {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--text);
+  line-height: 1.6;
+  border-left: 2px solid var(--accent);
+  padding-left: 24px;
+  margin: 48px 0;
+}
+
+/* DOWNLOAD (reutiliza el componente de index.html) */
+.download-block {
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 48px;
+  margin-top: 8px;
+}
+.download-block .section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+.download-block .download-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.download-block .download-desc {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin: 0 auto 40px;
+  max-width: 420px;
+}
+.cta-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* FUENTES */
+.sources {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.sources-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 18px;
+}
+.sources ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sources li {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.65;
+  margin-bottom: 12px;
+  word-break: break-word;
+}
+.sources a {
+  color: var(--text-dim);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+.sources a:hover { color: var(--text-mid); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 100%;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: var(--text-mid);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--accent); }
+.footer-copy { font-size: 12px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Parlando</a>
+  <a href="/blog/" class="nav-back">← Volver al Blog</a>
+</nav>
+
+<main class="wrapper">
+  <div class="page-label">Blog · Comunicación</div>
+
+  <h1 class="page-title">Por qué gritarle a alguien con dificultad auditiva no funciona (y qué sí)</h1>
+
+  <div class="article-lead">
+    <p>Casi 1 de cada 4 personas mayores de 60 años vive con pérdida auditiva discapacitante, según la Organización Mundial de la Salud. En el mundo, más de 1.500 millones de personas conviven con algún grado de dificultad para oír. No es una condición rara ni aislada, es probable que ya converses seguido con alguien que la tiene, aunque no te lo haya dicho.</p>
+    <p>En la Edición Nº1 de nuestro newsletter dejamos cuatro consejos rápidos sobre esto. Aquí vamos más a fondo, qué dice la evidencia detrás de cada uno, y por qué algunas cosas que parecen sentido común en realidad empeoran la conversación.</p>
+  </div>
+
+  <div class="article-section">
+    <h2>Gritar no ayuda, distorsiona</h2>
+    <p>El primer instinto casi siempre es el mismo, subir la voz. Es también el que menos funciona. Forzar el volumen cambia la forma en que se articulan las palabras y deforma los movimientos de la boca. El resultado es una voz más fuerte, pero menos clara, justo lo contrario de lo que se necesita. Hablar despacio y marcando bien las palabras, sin gritar ni exagerar los gestos, es lo que recomiendan de forma consistente organizaciones como ASHA (American Speech-Language-Hearing Association) y la Hearing Loss Association of America.</p>
+  </div>
+
+  <div class="article-section">
+    <h2>La cara comunica lo que el oído no alcanza</h2>
+    <p>Buena parte de una conversación no se escucha, se ve. Estudios sobre lectura labial coinciden en que entre el 30% y el 40% de los sonidos del habla son visibles en los labios, el resto depende de que el oyente complete lo que falta con contexto y con el resto de la cara. Por eso importan cosas simples, hablarle de frente, no de lado ni desde otra habitación, en un espacio bien iluminado, sin cubrirte la boca con la mano ni comer mientras hablas. No es solo un gesto de cortesía, es información que la otra persona necesita para completar lo que el oído no captó.</p>
+  </div>
+
+  <div class="article-section">
+    <h2>El ruido de fondo pesa más de lo que crees</h2>
+    <p>Una persona con audición típica puede seguir una conversación incluso cuando el ruido de fondo es más fuerte que la voz de quien habla. Investigación en audiología muestra que alguien con pérdida auditiva generalmente necesita lo contrario, que la voz sea notablemente más fuerte que el ruido, para entender lo mismo. Eso explica por qué un restaurante ruidoso o la televisión encendida de fondo convierten una conversación normal en un esfuerzo agotador para la otra persona. Bajar el volumen de lo que suena alrededor ayuda más que subir el de tu propia voz.</p>
+  </div>
+
+  <div class="article-section">
+    <h2>Repetir no es lo mismo que reformular</h2>
+    <p>Cuando alguien no entiende, el reflejo es repetir la misma frase, más fuerte. Rara vez funciona, si una palabra no se entendió la primera vez, decirla exactamente igual no le da información nueva a quien escucha. Decirla con otras palabras sí, porque cambia los sonidos, el ritmo, y las pistas visuales disponibles para completar el mensaje.</p>
+  </div>
+
+  <p class="article-cierre">Ninguno de estos ajustes cuesta nada ni requiere entrenamiento. Cambian, eso sí, cómo se siente la persona al otro lado de la conversación. Construimos Parlando pensando en Berthica, la abuela de mi esposa, y en cada conversación que se quedó en un sí y una sonrisa, en lugar de la respuesta real.</p>
+
+  <!-- DESCARGA · mismo componente de botones que index.html -->
+  <div class="download-block">
+    <span class="section-label">Descarga</span>
+    <h2 class="download-title">Descárgala ahora</h2>
+    <p class="download-desc">Transcripción de voz en tiempo real, gratis.</p>
+    <div class="cta-btns" style="flex-direction:column; align-items:center; gap:20px;">
+      <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; align-items:center;">
+        <a href="https://play.google.com/store/apps/details?id=com.primitribu.parlando" target="_blank" rel="noopener" style="display:block; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+          <img src="/assets/badge-google-play.svg" alt="Disponible en Google Play" width="189" height="56" style="height:56px; display:block;">
+        </a>
+        <a href="https://apps.apple.com/app/id6791811825" target="_blank" rel="noopener" style="display:block; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+          <img src="/assets/badge-app-store.svg" alt="Disponible en App Store" width="200" height="60" style="height:56px; display:block;">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUENTES -->
+  <div class="sources">
+    <div class="sources-label">Fuentes</div>
+    <ol>
+      <li>Organización Mundial de la Salud, "Deafness and hearing loss" — <a href="https://www.who.int/news-room/fact-sheets/detail/deafness-and-hearing-loss" target="_blank" rel="noopener">https://www.who.int/news-room/fact-sheets/detail/deafness-and-hearing-loss</a></li>
+      <li>Organización Mundial de la Salud, "Deafness" (facts in pictures) — <a href="https://www.who.int/news-room/facts-in-pictures/detail/deafness" target="_blank" rel="noopener">https://www.who.int/news-room/facts-in-pictures/detail/deafness</a></li>
+      <li>ASHA, "Tips for Communicating With Someone Who Has Hearing Loss" — <a href="https://www.asha.org/about/press-room/articles/tips-for-communicating-with-someone-who-has-hearing-loss/" target="_blank" rel="noopener">https://www.asha.org/about/press-room/articles/tips-for-communicating-with-someone-who-has-hearing-loss/</a></li>
+      <li>Hearing Loss Association of America, "Communication Tips" — <a href="https://www.hearingloss.org/understanding-hearing-loss/hearing-loss-101/communication-tips/" target="_blank" rel="noopener">https://www.hearingloss.org/understanding-hearing-loss/hearing-loss-101/communication-tips/</a></li>
+      <li>Killion, M. (1985). "The Noise Problem: There's Hope." Hearing Instruments, Vol. 36</li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <a href="/" class="footer-logo">Parlando</a>
+  <div class="footer-links">
+    <a href="https://parlandoapp.com/privacidad/">Privacidad</a>
+    <a href="https://parlandoapp.com/terminos/">Términos</a>
+  </div>
+  <div class="footer-copy">© 2026 Parlando · Tu voz, sus ojos.</div>
+</footer>
+
+</body>
+</html>
