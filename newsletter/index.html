@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG1SZTK330"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XG1SZTK330');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter — Parlando</title>
+<meta name="description" content="Archivo de las ediciones del newsletter mensual de Parlando: consejos para acompañar a personas con dificultad auditiva y novedades de la app.">
+<meta property="og:title" content="Newsletter — Parlando">
+<meta property="og:description" content="Archivo de las ediciones del newsletter mensual de Parlando.">
+<meta property="og:image" content="https://parlandoapp.com/og.jpg">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #0f0f18;
+  --surface: #13131e;
+  --border: #1e1e2e;
+  --accent: #f0c060;
+  --text: #ede8f0;
+  --text-dim: #6a6480;
+  --text-mid: #a09ab0;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(10,10,15,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+.nav-back {
+  font-size: 13px;
+  color: var(--text-mid);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--text); }
+
+/* CONTENT */
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+}
+.page-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.page-intro {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-bottom: 56px;
+  max-width: 560px;
+}
+
+/* EDITION LIST */
+.edition-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.edition-card:hover {
+  border-color: rgba(240,192,96,0.3);
+  transform: translateY(-3px);
+}
+.edition-num {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.edition-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.edition-teaser {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 100%;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: var(--text-mid);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--accent); }
+.footer-copy { font-size: 12px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Parlando</a>
+  <a href="/" class="nav-back">← Volver al inicio</a>
+</nav>
+
+<main class="wrapper">
+  <div class="page-label">Newsletter</div>
+
+  <h1 class="page-title">El newsletter<br>de Parlando.</h1>
+
+  <p class="page-intro">Una vez al mes, algo que de verdad sirva: consejos prácticos para acompañar a alguien con dificultad auditiva y novedades de la app. Sin relleno. Aquí quedan todas las ediciones.</p>
+
+  <a class="edition-card" href="/newsletter/edicion-01/">
+    <div class="edition-num">Edición Nº1</div>
+    <div class="edition-title">Edición Nº1 — Septiembre 2026</div>
+    <p class="edition-teaser">Cuatro cosas que sí ayudan al hablarle a alguien con dificultad auditiva, y cómo personalizar Parlando a tu medida.</p>
+  </a>
+
+</main>
+
+<footer>
+  <a href="/" class="footer-logo">Parlando</a>
+  <div class="footer-links">
+    <a href="https://parlandoapp.com/privacidad/">Privacidad</a>
+    <a href="https://parlandoapp.com/terminos/">Términos</a>
+  </div>
+  <div class="footer-copy">© 2026 Parlando · Tu voz, sus ojos.</div>
+</footer>
+
+</body>
+</html>
