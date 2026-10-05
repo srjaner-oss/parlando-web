@@ -26,6 +26,11 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://parlandoapp.com/newsletter/edicion-02/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://parlandoapp.com/blog/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
