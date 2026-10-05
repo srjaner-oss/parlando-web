@@ -1065,7 +1065,7 @@ footer {
     <div class="feat-card reveal">
       <div class="feat-icon">🔊</div>
       <div class="feat-title">Texto a voz</div>
-      <div class="feat-desc">Escribe y la app habla por ti. Ideal para personas sordomudas — 2 voces incluidas.</div>
+      <div class="feat-desc">Escribe y la app habla por ti. Ideal para quien no puede hablar o prefiere escribir. 2 voces incluidas.</div>
       <div class="feat-badge free">Gratis</div>
     </div>
   </div>
@@ -1078,7 +1078,7 @@ footer {
   <!-- Premium features, colapsadas por defecto -->
   <div id="premium-features" class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px;">
 
-    <div class="section-label" style="grid-column:1/-1; justify-content:center; display:flex; margin:8px 0 2px;">Premium · Pago único (próximamente)</div>
+    <div class="section-label" style="grid-column:1/-1; justify-content:center; display:flex; margin:8px 0 2px;">Premium · Pago único</div>
     <div style="grid-column:1/-1; text-align:center; font-size:13px; color:var(--text-mid); margin-bottom:8px;">Pagas una vez, es tuyo para siempre.</div>
     <div style="grid-column:1/-1; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;">
       <div class="feat-card">
@@ -1214,7 +1214,8 @@ footer {
       </button>
       <div class="faq-a">
         <p>Sí. La versión gratuita incluye transcripción en vivo ilimitada, texto a voz, pantalla siempre encendida, ajuste de letra y varios idiomas. Siempre será gratis para quien lo necesite.</p>
-        <p>Más adelante llegará Parlando Premium, con dos opciones. Un pago único que agrega historial de conversaciones, búsqueda, personalización visual, favoritas y más. Y una suscripción con funciones avanzadas como transcripción de los mensajes de voz que recibes, voces naturales y experiencias con música. Todo esto está en desarrollo y lo anunciaremos cuando esté listo.</p>
+        <p>Si quieres más, Parlando Premium ya está disponible con un pago único: historial de conversaciones, carpetas, búsqueda, favoritas, exportar a PDF, personalización visual y backup en la nube. Pagas una vez y es tuyo para siempre.</p>
+        <p>Más adelante llegará una suscripción con funciones avanzadas, como transcribir los mensajes de voz que recibes y voces más naturales. La anunciaremos cuando esté lista.</p>
       </div>
     </div>
 
@@ -1267,7 +1268,7 @@ footer {
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <p>En la versión gratuita el texto desaparece al cerrar la app. Parlando Premium incluirá historial para revisar conversaciones pasadas, y más adelante backup en la nube. Estas funciones están en desarrollo.</p>
+        <p>En la versión gratuita el texto desaparece al cerrar la app. Con Parlando Premium guardas cada conversación con un toque, la organizas en carpetas, la buscas por palabra y la exportas a PDF. También puedes activar el backup en la nube para no perder nada si cambias de teléfono.</p>
       </div>
     </div>
 
@@ -1277,8 +1278,9 @@ footer {
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <p>Funciona mejor en ambientes tranquilos. En lugares con mucho ruido puede haber errores en la transcripción. Esto pasa porque la versión gratuita usa el motor de reconocimiento de voz que trae tu propio celular (de Android o de Google), que no es el más robusto que existe para ambientes difíciles.</p>
-        <p>Para mejores resultados: habla directo al micrófono del celular, reduce el ruido de fondo cuando puedas, usa la app con buena conexión a internet, y revisa que el motor de reconocimiento de tu celular sea el de Google y esté actualizado en la Play Store.</p>
+        <p>Funciona mejor en ambientes tranquilos. En lugares con mucho ruido puede haber errores en la transcripción.</p>
+        <p>Esto pasa porque la versión gratuita usa el motor de reconocimiento de voz que trae tu propio celular (Google en Android, Apple en iPhone), que no es el más robusto para ambientes difíciles.</p>
+        <p>Para mejores resultados: habla directo al micrófono del celular, reduce el ruido de fondo cuando puedas y usa la app con buena conexión a internet. En Android, revisa además que el motor de reconocimiento sea el de Google y esté actualizado en Play Store.</p>
         <p>Es una limitación que conocemos y en la que estamos trabajando para que Parlando funcione cada vez mejor en más situaciones.</p>
       </div>
     </div>
@@ -1290,14 +1292,14 @@ footer {
 
 <!-- NEWSLETTER -->
 <section class="reveal" style="text-align:center; max-width:600px;">
-  <div class="section-label" style="justify-content:center; display:flex;">Novedades</div>
-  <h2 class="section-title">¿Solo quieres<br><em>las novedades?</em></h2>
-  <p class="section-desc" style="margin:0 auto 8px; text-align:center;">¿Quieres enterarte de las nuevas funciones de Parlando apenas salgan? Déjanos tu correo y te avisamos.</p>
+  <div class="section-label" style="justify-content:center; display:flex;">Newsletter</div>
+  <h2 class="section-title">Un correo<br><em>al mes.</em></h2>
+  <p class="section-desc" style="margin:0 auto 8px; text-align:center;">Consejos para comunicarte mejor con quien oye menos y las novedades de Parlando. Sin relleno. <a href="/newsletter/" style="color:var(--accent); text-decoration:underline">Mira las ediciones pasadas</a></p>
   <div class="ios-capture" style="margin-top:32px;">
     <div class="ios-capture-form">
       <input id="newsletter-email" type="email" placeholder="tu@correo.com" autocomplete="email">
       <input type="text" name="_gotcha" id="newsletter-gotcha" style="display:none" tabindex="-1" autocomplete="off">
-      <button onclick="submitNewsletter(this)">Quiero enterarme</button>
+      <button onclick="submitNewsletter(this)">Suscribirme</button>
     </div>
     <span id="newsletter-msg" class="ios-capture-label" style="display:none;"></span>
     <span class="ios-capture-label">Puedes darte de baja cuando quieras.</span>
@@ -1311,10 +1313,11 @@ footer {
 <footer>
   <a href="#" class="footer-logo">Parlando</a>
   <div class="footer-links">
-    <a href="https://www.instagram.com/parlando.app" target="_blank">Instagram</a>
+    <a href="https://www.instagram.com/parlando.app" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/company/parlandoapp" target="_blank" rel="noopener">LinkedIn</a>
     <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>
     <a href="/privacidad/">Privacidad</a>
-    <a href="https://parlandoapp.com/terminos/">Términos</a>
+    <a href="/terminos/">Términos</a>
   </div>
   <div class="footer-copy">© 2026 Parlando · Tu voz, sus ojos.</div>
 </footer>
@@ -1324,9 +1327,9 @@ footer {
 <div id="ios-modal" class="modal-overlay">
   <div class="modal-box" style="max-width:380px;">
     <button onclick="closeModal('ios-modal')" class="modal-close">×</button>
-    <div class="modal-emoji">🍎</div>
+    <div class="modal-emoji">📬</div>
     <h3 class="modal-title">¡Anotado!</h3>
-    <p class="modal-desc">Te avisamos cuando Parlando llegue a iOS. Revisa también tu carpeta de spam.</p>
+    <p class="modal-desc">Te llegará un correo al mes con consejos y novedades de Parlando. Revisa también tu carpeta de spam.</p>
   </div>
 </div>
 
@@ -1379,19 +1382,19 @@ function submitNewsletter(btn) {
       msg.textContent = "Listo, ya estás en la lista. Nos vemos pronto.";
       msg.style.display = "block";
       msg.style.color = "var(--accent)";
-      btn.textContent = "Quiero enterarme";
+      btn.textContent = "Suscribirme";
       btn.disabled = false;
     } else {
       msg.textContent = "Hubo un error. Intenta de nuevo.";
       msg.style.display = "block";
-      btn.textContent = "Quiero enterarme";
+      btn.textContent = "Suscribirme";
       btn.disabled = false;
     }
   })
   .catch(function() {
     msg.textContent = "Hubo un error de conexión. Intenta de nuevo.";
     msg.style.display = "block";
-    btn.textContent = "Quiero enterarme";
+    btn.textContent = "Suscribirme";
     btn.disabled = false;
   });
 }
