@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG1SZTK330"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XG1SZTK330');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qué hacer cuando tu familiar se aísla porque no escucha bien | Parlando</title>
+<meta name="description" content="El aislamiento social por pérdida auditiva no es inevitable. Estrategias prácticas para ayudar a tu familiar a reconectar y participar.">
+<link rel="canonical" href="https://parlandoapp.com/blog/adulto-mayor-se-aisla-por-no-escuchar/">
+<meta property="og:title" content="Qué hacer cuando tu familiar se aísla porque no escucha bien | Parlando">
+<meta property="og:description" content="El aislamiento social por pérdida auditiva no es inevitable. Estrategias prácticas para ayudar a tu familiar a reconectar y participar.">
+<meta property="og:url" content="https://parlandoapp.com/blog/adulto-mayor-se-aisla-por-no-escuchar/">
+<meta property="og:image" content="https://parlandoapp.com/og.jpg">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #0f0f18;
+  --surface: #13131e;
+  --border: #1e1e2e;
+  --accent: #f0c060;
+  --text: #ede8f0;
+  --text-dim: #6a6480;
+  --text-mid: #a09ab0;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(10,10,15,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+.nav-back {
+  font-size: 13px;
+  color: var(--text-mid);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--text); }
+
+/* CONTENT */
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+}
+.page-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 40px;
+}
+
+/* ARTICLE */
+.article-lead p {
+  font-size: 17px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.article-section { margin-bottom: 44px; }
+.article-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.article-section p {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+.article-section ul {
+  padding-left: 20px;
+  margin: 0 0 14px;
+}
+.article-section li {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 6px;
+}
+.article-section li::marker { color: var(--accent); }
+.article-section a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+.article-section a:hover { opacity: 0.8; }
+
+/* CIERRE */
+.article-cierre {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--text);
+  line-height: 1.6;
+  border-left: 2px solid var(--accent);
+  padding-left: 24px;
+  margin: 48px 0;
+}
+
+/* DOWNLOAD (reutiliza el componente de index.html) */
+.download-block {
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 48px;
+  margin-top: 8px;
+}
+.download-block .section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+.download-block .download-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.download-block .download-desc {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin: 0 auto 40px;
+  max-width: 420px;
+}
+.cta-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* FUENTES */
+.sources {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.sources-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 18px;
+}
+.sources ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sources li {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.65;
+  margin-bottom: 12px;
+  word-break: break-word;
+}
+.sources a {
+  color: var(--text-dim);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+.sources a:hover { color: var(--text-mid); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 100%;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: var(--text-mid);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--accent); }
+.footer-copy { font-size: 12px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Parlando</a>
+  <a href="/blog/" class="nav-back">← Volver al Blog</a>
+</nav>
+
+<main class="wrapper">
+  <div class="page-label">Blog · Acompañar</div>
+
+  <h1 class="page-title">Qué hacer cuando tu familiar se aísla porque no escucha bien</h1>
+
+  <div class="article-lead">
+    <p>Ver a un familiar retirarse poco a poco de las reuniones, dejar de contestar llamadas o permanecer en silencio durante las comidas puede generar preocupación y tristeza. Cuando la causa es la dificultad para escuchar, el aislamiento no surge por desinterés sino por el esfuerzo, la vergüenza o la frustración que produce intentar seguir conversaciones que ya no se comprenden con claridad.</p>
+    <p>El aislamiento social asociado con la pérdida auditiva no es inevitable. La evaluación auditiva, las ayudas tecnológicas, la rehabilitación y los cambios en la forma de conversar pueden favorecer la participación social y mejorar la calidad de vida de tu familiar.</p>
+  </div>
+
+  <div class="article-section">
+    <h2>Por qué una persona mayor puede aislarse cuando no escucha bien</h2>
+    <p>La pérdida auditiva puede hacer que conversar exija demasiado esfuerzo. Seguir una conversación con ruido de fondo, varias personas hablando al mismo tiempo o voces que no se ven con claridad puede resultar agotador. La persona pierde fragmentos, responde fuera de contexto o depende continuamente de que otros le repitan.</p>
+    <p>La Organización Mundial de la Salud describe que la dificultad para comprender y mantener conversaciones puede llevar a evitar situaciones sociales potencialmente incómodas. La vergüenza, la frustración o el temor a parecer confundida pueden pesar más que el deseo de participar.</p>
+    <p>También influyen las barreras del entorno: ruido de fondo, mala iluminación, personas que hablan desde otra habitación o reuniones con conversaciones simultáneas dificultan aún más la comprensión. Con el tiempo, la persona puede perder autonomía para usar el teléfono, escuchar la televisión, acudir a actividades o comunicarse con profesionales, lo que reduce progresivamente su participación.</p>
+    <p>Esta relación entre pérdida auditiva, dificultades de comunicación y retraimiento está documentada, pero no significa que toda persona con pérdida auditiva se aísle ni que la pérdida auditiva sea, por sí sola, una causa comprobada de depresión o demencia. La OMS señala que la pérdida auditiva no atendida puede contribuir a soledad, frustración, aislamiento social, ansiedad y depresión, particularmente en adultos mayores. También se ha asociado con deterioro cognitivo, pero pueden influir la edad, enfermedades vasculares, depresión, menor actividad social y otros factores.</p>
+    <p>El aislamiento social y la soledad, independientemente de su causa, se relacionan en las personas mayores con mayor riesgo de depresión, ansiedad, deterioro cognitivo, demencia y enfermedad cardiovascular. Por ello, cuando un familiar con dificultad auditiva deja de participar, conviene evaluar tanto la audición como el estado de ánimo, la cognición y la salud general.</p>
+  </div>
+
+  <div class="article-section">
+    <h2>Señales de que tu familiar se está aislando por no oír bien</h2>
+    <p>Observar varias señales durante semanas es más informativo que un episodio aislado. Estas señales no prueban que el aislamiento sea exclusivamente auditivo, ya que también puede deberse a depresión, dolor, movilidad reducida, duelo, problemas de memoria, efectos de medicamentos o dificultades económicas. Una evaluación profesional ayuda a distinguirlos.</p>
+    <ul>
+      <li>Deja de asistir a reuniones, comidas familiares, actividades religiosas o clubes que antes disfrutaba</li>
+      <li>Se retira temprano, permanece en otra habitación o prefiere estar solo cuando hay visitas</li>
+      <li>Evita llamadas telefónicas o pide comunicarse únicamente por mensajes</li>
+      <li>Dice con frecuencia &quot;no importa&quot;, &quot;déjalo&quot; o &quot;ya me enteraré&quot;, o parece asentir sin haber comprendido</li>
+      <li>Solicita repetición constante, responde fuera de contexto o mira intensamente los labios</li>
+      <li>Se muestra irritable, cansado o ansioso después de conversar</li>
+      <li>Sube mucho el volumen de la televisión o abandona programas porque no los entiende</li>
+      <li>Culpa a los demás de murmurar, aunque el problema aparece sobre todo en ambientes ruidosos</li>
+      <li>Reduce su participación incluso en actividades que aún puede disfrutar con adaptaciones</li>
+    </ul>
+  </div>
+
+  <div class="article-section">
+    <h2>Qué puede hacer la familia</h2>
+    <p>El primer paso es hablar directamente con la persona, en privado y sin reproches. Puedes decir algo como &quot;he notado que las reuniones te resultan difíciles, ¿qué cambios te ayudarían?&quot;. No conviene hablar de ella como si no estuviera presente.</p>
+    <p>Solicitar una evaluación auditiva con un otorrinolaringólogo o un audiólogo es fundamental. También deben revisarse cerumen, infecciones, medicamentos ototóxicos y otras causas tratables, según corresponda. Pregunta qué situaciones son más difíciles: teléfono, restaurantes, televisión, grupos grandes o conversaciones individuales. Las soluciones deben adaptarse a esa situación.</p>
+    <p>Si se indican audífonos u otros dispositivos, es importante usarlos de forma constante, con ajuste, mantenimiento y seguimiento. Los audífonos pueden mejorar la comunicación, pero requieren adaptación y no restauran una audición normal.</p>
+    <p>Mantén actividades sociales manejables: visitas individuales, grupos pequeños, paseos, clases tranquilas o reuniones breves. El objetivo es evitar que la primera solución sea dejar de invitarlo. Combina apoyos auditivos y visuales: texto, subtítulos, mensajes escritos, lectura labial y gestos naturales. La OMS reconoce los subtítulos, sistemas de bucle, sistemas inalámbricos y otras tecnologías como apoyos de acceso a la comunicación.</p>
+    <p>Refuerza la participación, no solo la audición: asígnale una tarea, inclúyelo en la decisión del lugar y pregúntale directamente su opinión. Si aparecen tristeza persistente, pérdida de interés, desesperanza, alteraciones marcadas del sueño o del apetito, confusión o comentarios sobre no querer vivir, contacta con un profesional de salud con prontitud.</p>
+  </div>
+
+  <div class="article-section">
+    <h2>Cómo hacer reuniones más inclusivas</h2>
+    <p>Pequeños cambios en la forma de conversar y en el entorno pueden marcar una gran diferencia. Elige un lugar bien iluminado y con poco ruido, lejos de televisores, música, cocinas y tráfico. Sienta a la persona en una posición desde la que pueda ver las caras de los participantes.</p>
+    <p>Habla de frente, a una distancia razonable, con ritmo natural y frases claras. No grites ni exageres la pronunciación, ya que eso puede distorsionar el habla. Llama suavemente su atención antes de hablar y avisa cuando cambia el tema. Evita hablar desde otra habitación, mientras comes o dando la espalda.</p>
+    <p>Procura que hable una persona a la vez y que las conversaciones paralelas sean limitadas. Resumir los puntos importantes y confirmar la comprensión con tacto ayuda: puedes decir &quot;¿te parece que lo expliqué claramente?&quot; en vez de &quot;¿entendiste?&quot;. Entrega por escrito horarios, direcciones, nombres, menús o decisiones importantes.</p>
+    <p>Planifica pausas: escuchar en ambientes difíciles puede producir fatiga. En reuniones grandes, usa un micrófono remoto, sistema de transmisión de audio, bucle auditivo o subtítulos cuando estén disponibles. Puedes encontrar más estrategias en <a href="/blog/como-hablarle-a-alguien-con-dificultad-auditiva/">Por qué gritarle a alguien con dificultad auditiva no funciona (y qué sí)</a>.</p>
+  </div>
+
+  <div class="article-section">
+    <h2>Papel de la transcripción en vivo y otras tecnologías</h2>
+    <p>La transcripción en vivo convierte el habla en texto en una pantalla y puede ayudar cuando el audífono no basta, especialmente en reuniones, consultas médicas, llamadas o lugares con ruido. Los subtítulos y los dispositivos de comunicación asistida están reconocidos por la OMS como recursos para mejorar el acceso a la información y la participación.</p>
+    <p>Su utilidad es mayor cuando la persona puede leer cómodamente, el texto aparece con poca demora y buena legibilidad, se combina con audio amplificado, buena iluminación y contacto visual, y se usa para conversaciones importantes, no para reemplazar toda interacción humana.</p>
+    <p>La tecnología reduce una barrera de comunicación, pero no demuestra por sí sola que elimine el aislamiento social. Su efecto depende de que la persona la acepte, sepa utilizarla, tenga acceso a ella y el reconocimiento de voz funcione bien con acentos, varias voces, ruido o términos médicos.</p>
+    <p><a href="/">Parlando</a> es una aplicación colombiana gratuita que transcribe en vivo las conversaciones y puede servir como apoyo para las conversaciones del día a día, complementando las demás estrategias de comunicación.</p>
+    <p>En la práctica, la estrategia más sólida es combinar evaluación auditiva, tratamiento o rehabilitación cuando corresponda, tecnología de apoyo, entornos accesibles y contacto social regular. El aislamiento no es inevitable cuando la familia, los profesionales y la persona trabajan juntos para mantener la conexión.</p>
+  </div>
+
+  <!-- DESCARGA · mismo componente de botones que index.html -->
+  <div class="download-block">
+    <span class="section-label">Descarga</span>
+    <h2 class="download-title">Descárgala ahora</h2>
+    <p class="download-desc">Transcripción de voz en tiempo real, gratis.</p>
+    <div class="cta-btns" style="flex-direction:column; align-items:center; gap:20px;">
+      <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; align-items:center;">
+        <a href="https://play.google.com/store/apps/details?id=com.primitribu.parlando" target="_blank" rel="noopener" style="display:block; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+          <img src="/assets/badge-google-play.svg" alt="Disponible en Google Play" width="189" height="56" style="height:56px; display:block;">
+        </a>
+        <a href="https://apps.apple.com/app/id6791811825" target="_blank" rel="noopener" style="display:block; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+          <img src="/assets/badge-app-store.svg" alt="Disponible en App Store" width="200" height="60" style="height:56px; display:block;">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUENTES -->
+  <div class="sources">
+    <div class="sources-label">Fuentes</div>
+    <ol>
+      <li>Organización Mundial de la Salud — <a href="https://iris.who.int/server/api/core/bitstreams/42c0d241-f2dd-44d8-b764-fbae67306743/content" target="_blank" rel="noopener">https://iris.who.int/server/api/core/bitstreams/42c0d241-f2dd-44d8-b764-fbae67306743/content</a></li>
+      <li>Organización Mundial de la Salud — <a href="https://apps.who.int/gb/ebwha/pdf_files/WHA70/A70_34-en.pdf" target="_blank" rel="noopener">https://apps.who.int/gb/ebwha/pdf_files/WHA70/A70_34-en.pdf</a></li>
+      <li>Organización Mundial de la Salud — <a href="https://cdn.who.int/media/docs/default-source/documents/health-topics/deafness-and-hearing-loss/j0041_mls_whd_media_tookit_singles_web_v12.pdf?sfvrsn=fe410198_9&amp;download=true" target="_blank" rel="noopener">https://cdn.who.int/media/docs/default-source/documents/health-topics/deafness-and-hearing-loss/j0041_mls_whd_media_tookit_singles_web_v12.pdf?sfvrsn=fe410198_9&amp;download=true</a></li>
+      <li>Organización Mundial de la Salud — <a href="https://iris.who.int/bitstream/handle/10665/343206/9789240030749-eng.pdf" target="_blank" rel="noopener">https://iris.who.int/bitstream/handle/10665/343206/9789240030749-eng.pdf</a></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <a href="/" class="footer-logo">Parlando</a>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/parlando.app" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/company/parlandoapp" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:hola@parlandoapp.com">hola@parlandoapp.com</a>
+    <a href="/privacidad/">Privacidad</a>
+    <a href="/terminos/">Términos</a>
+  </div>
+  <div class="footer-copy">© 2026 Parlando · Tu voz, sus ojos.</div>
+</footer>
+
+</body>
+</html>
