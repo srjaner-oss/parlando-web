@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG1SZTK330"></script>
+<!-- Google tag (gtag.js) con modo de consentimiento: no usa cookies hasta que la persona acepta -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+  try { if (localStorage.getItem('parlando_cookies') === 'si') gtag('consent', 'update', { analytics_storage: 'granted' }); } catch (e) {}
   gtag('js', new Date());
   gtag('config', 'G-XG1SZTK330');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG1SZTK330"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Parlando — Tu voz, sus ojos</title>
+<link rel="canonical" href="https://parlandoapp.com/">
 <meta name="description" content="App de transcripción en vivo para personas con dificultad auditiva. Tu voz se convierte en texto grande en su pantalla, en tiempo real.">
 <meta property="og:title" content="Parlando — Tu voz, sus ojos">
 <meta property="og:description" content="App de transcripción en vivo para personas con dificultad auditiva.">
@@ -1301,6 +1304,10 @@ footer {
       <input type="text" name="_gotcha" id="newsletter-gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <button onclick="submitNewsletter(this)">Suscribirme</button>
     </div>
+    <label for="newsletter-acepto" style="display:flex; gap:10px; align-items:flex-start; justify-content:center; margin:16px auto 0; max-width:460px; font-size:13px; line-height:1.5; color:var(--text-mid); text-align:left; cursor:pointer;">
+      <input type="checkbox" id="newsletter-acepto" style="margin-top:3px; width:16px; height:16px; flex:none; accent-color:#f0c060;">
+      <span>Autorizo a Parlando a usar mi correo para enviarme el newsletter, según la <a href="/privacidad/" style="color:var(--accent); text-decoration:underline">política de privacidad</a>.</span>
+    </label>
     <span id="newsletter-msg" class="ios-capture-label" style="display:none;"></span>
     <span class="ios-capture-label">Puedes darte de baja cuando quieras.</span>
   </div>
@@ -1369,12 +1376,18 @@ function submitNewsletter(btn) {
   var gotcha = document.getElementById("newsletter-gotcha").value;
   var msg = document.getElementById("newsletter-msg");
   if (!email || !email.includes("@")) { alert("Ingresa un correo válido."); return; }
+  if (!document.getElementById("newsletter-acepto").checked) {
+    msg.textContent = "Para suscribirte, marca la casilla de autorización.";
+    msg.style.display = "block";
+    msg.style.color = "#e07070";
+    return;
+  }
   btn.textContent = "Enviando...";
   btn.disabled = true;
   fetch("https://formspree.io/f/mpqbowke", {
     method: "POST",
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body: JSON.stringify({ email: email, tipo: "newsletter", consentimiento: true, _gotcha: gotcha })
+    body: JSON.stringify({ email: email, tipo: "newsletter", consentimiento: "si", politica: "v2 nov-2026", _gotcha: gotcha })
   })
   .then(function(r) {
     if (r.ok) {
@@ -1441,5 +1454,6 @@ var observer = new IntersectionObserver(function(entries) {
 }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
 reveals.forEach(function(r) { observer.observe(r); });
 </script>
+<script src="/assets/consentimiento.js" defer></script>
 </body>
 </html>

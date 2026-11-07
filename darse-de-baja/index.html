@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG1SZTK330"></script>
+<!-- Google tag (gtag.js) con modo de consentimiento: no usa cookies hasta que la persona acepta -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+  try { if (localStorage.getItem('parlando_cookies') === 'si') gtag('consent', 'update', { analytics_storage: 'granted' }); } catch (e) {}
   gtag('js', new Date());
   gtag('config', 'G-XG1SZTK330');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG1SZTK330"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Darse de baja — Parlando</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="description" content="Darse de baja de los correos de Parlando es rápido y sin complicaciones. Cancela tu suscripción cuando quieras.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -159,5 +165,6 @@
   });
 </script>
 
+<script src="/assets/consentimiento.js" defer></script>
 </body>
 </html>
