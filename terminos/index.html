@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG1SZTK330"></script>
+<!-- Google tag (gtag.js) con modo de consentimiento: no usa cookies hasta que la persona acepta -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+  try { if (localStorage.getItem('parlando_cookies') === 'si') gtag('consent', 'update', { analytics_storage: 'granted' }); } catch (e) {}
   gtag('js', new Date());
   gtag('config', 'G-XG1SZTK330');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG1SZTK330"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Términos y Condiciones — Parlando</title>
+<link rel="canonical" href="https://parlandoapp.com/terminos/">
 <meta name="description" content="Términos y condiciones de uso de Parlando, app de transcripción en vivo para personas con dificultad auditiva.">
+<meta property="og:title" content="Términos y Condiciones — Parlando">
+<meta property="og:description" content="Términos y condiciones de uso de Parlando, app de transcripción en vivo para personas con dificultad auditiva.">
+<meta property="og:url" content="https://parlandoapp.com/terminos/">
+<meta property="og:image" content="https://parlandoapp.com/og.jpg">
 <meta name="theme-color" content="#0a0a0f">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -305,5 +312,6 @@ footer {
   <div class="footer-copy">© 2026 Parlando · Tu voz, sus ojos.</div>
 </footer>
 
+<script src="/assets/consentimiento.js" defer></script>
 </body>
 </html>
